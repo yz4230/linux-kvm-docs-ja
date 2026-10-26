@@ -16,7 +16,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "source"
-ORIG = Path("/Users/yz/cloned/linux/Documentation/virt/kvm")
+ORIG = Path("/Users/yz/cloned/linux/Documentation/virt")
 
 KEY_MAP = {
     "アーキテクチャ": "Architectures",
@@ -24,21 +24,40 @@ KEY_MAP = {
     "パラメータ": "Parameters",
     "戻り値": "Returns",
     "種別": "Type",
+    "型": "Type",
     "目的": "Purpose",
     "状態": "Status",
     "保護対象": "Protects",
     "コメント": "Comment",
     "使用例": "Usage example",
+    # virt/coco/sev-guest.rst と virt/coco/tdx-guest.rst
+    "対象技術": "Technology",
+    "入力パラメータ": "Input parameters",
+    "出力": "Output",
 }
 
 TERM_MAP = {
     "グループ": "Groups",
     "属性": "Attributes",
     "エラー": "Errors",
+    "対象技術": "Technology",
+    "種別": "Type",
+    "パラメータ": "Parameters",
+    "戻り値": "Returns",
 }
 
-FIELD_RE = re.compile(r'^(\s*):([^:\s]+):(.*)$')
+FIELD_RE = re.compile(r'^(\s*):([^:]+):(.*)$')
 TERM_RE = re.compile(r'^(\s*)([^\s:]+):\s*$')
+
+
+def translate_key(key: str) -> str | None:
+    """Map a Japanese field key to English, keeping a trailing ' (in)' modifier."""
+    if key in KEY_MAP:
+        return KEY_MAP[key]
+    base, _, rest = key.partition(" ")
+    if rest and base in KEY_MAP:
+        return f"{KEY_MAP[base]} {rest}"
+    return None
 
 
 def rewrite(path: Path) -> list[str]:
@@ -46,9 +65,10 @@ def rewrite(path: Path) -> list[str]:
     out = []
     for i, line in enumerate(path.read_text(encoding="utf-8").split("\n"), 1):
         m = FIELD_RE.match(line)
-        if m and m.group(2) in KEY_MAP:
-            new = f"{m.group(1)}:{KEY_MAP[m.group(2)]}:{m.group(3)}"
-            changes.append(f"{path.relative_to(ROOT)}:{i}: :{m.group(2)}: -> :{KEY_MAP[m.group(2)]}:")
+        mapped = translate_key(m.group(2)) if m else None
+        if m and mapped:
+            new = f"{m.group(1)}:{mapped}:{m.group(3)}"
+            changes.append(f"{path.relative_to(ROOT)}:{i}: :{m.group(2)}: -> :{mapped}:")
             line = new
         else:
             m = TERM_RE.match(line)

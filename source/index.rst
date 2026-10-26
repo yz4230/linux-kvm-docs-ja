@@ -1,22 +1,21 @@
 .. SPDX-License-Identifier: GPL-2.0
 
-===
-KVM
-===
+======================
+仮想化サポート
+======================
 
 .. toctree::
    :maxdepth: 2
 
-   api
-   devices/index
+   kvm/index
+   paravirt_ops
+   guest-halt-polling
+   ne_overview
+   acrn/index
+   coco/sev-guest
+   coco/tdx-guest
 
-   arm/index
-   s390/index
-   ppc-pv
-   x86/index
-   loongarch/index
-
-   locking
-   vcpu-requests
-   halt-polling
-   review-checklist
+.. 原文の toctree にあるが、このサイトでは未訳のため未収録:
+..   uml/user_mode_linux_howto_v2
+..   uml/nommu-uml
+..   hyperv/index

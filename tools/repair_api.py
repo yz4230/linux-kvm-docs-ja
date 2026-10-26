@@ -13,7 +13,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-API = ROOT / "source" / "api.rst"
+API = ROOT / "source" / "kvm" / "api.rst"
 
 REPAIRS: list[tuple[str, str, str]] = [
     (

@@ -21,7 +21,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "source"
-ORIG = Path("/Users/yz/cloned/linux/Documentation/virt/kvm")
+ORIG = Path("/Users/yz/cloned/linux/Documentation/virt")
 
 UNDERLINE_RE = re.compile(r'^([=\-~^"\'`+*#:.])\1{2,}\s*$')
 ANCHOR_RE = re.compile(r'^\.\. _[^\s:]+:\s*$')

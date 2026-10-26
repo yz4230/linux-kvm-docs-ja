@@ -18,18 +18,18 @@ SRC = ROOT / "source"
 
 FIXES: list[tuple[str, str, str]] = [
     # x86/hypercalls.rst: original uses the singular field key and capitalised terms
-    ("x86/hypercalls.rst", r'^(\s*):Architectures:', r'\1:Architecture:'),
-    ("x86/hypercalls.rst", r'^(\s*)使用法:\s*$', r'\1Usage:'),
-    ("x86/hypercalls.rst", r'^(\s*)ここで:\s*$', r'\1Where:'),
+    ("kvm/x86/hypercalls.rst", r'^(\s*):Architectures:', r'\1:Architecture:'),
+    ("kvm/x86/hypercalls.rst", r'^(\s*)使用法:\s*$', r'\1Usage:'),
+    ("kvm/x86/hypercalls.rst", r'^(\s*)ここで:\s*$', r'\1Where:'),
     # x86/msr.rst: original term line is lower-case
-    ("x86/msr.rst", r'^(\s*)データ:\s*$', r'\1data:'),
+    ("kvm/x86/msr.rst", r'^(\s*)データ:\s*$', r'\1data:'),
     # devices/vm.rst: attribute action list
-    ("devices/vm.rst", r'^(\s*)アクション:\s*$', r'\1Actions:'),
+    ("kvm/devices/vm.rst", r'^(\s*)アクション:\s*$', r'\1Actions:'),
     # x86/running-nested-guests.rst: glossary section term
-    ("x86/running-nested-guests.rst", r'^(\s*)用語:\s*$', r'\1Terminology:'),
+    ("kvm/x86/running-nested-guests.rst", r'^(\s*)用語:\s*$', r'\1Terminology:'),
     # lower-case "where:" in the ARM device docs
-    ("devices/arm-vgic-its.rst", r'^(\s*)ここで:\s*$', r'\1where:'),
-    ("devices/vfio.rst", r'^(\s*)ここで:\s*$', r'\1where:'),
+    ("kvm/devices/arm-vgic-its.rst", r'^(\s*)ここで:\s*$', r'\1where:'),
+    ("kvm/devices/vfio.rst", r'^(\s*)ここで:\s*$', r'\1where:'),
 ]
 
 

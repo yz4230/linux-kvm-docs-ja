@@ -31,8 +31,8 @@ def join_api_chunks() -> str:
         text = f.read_text(encoding="utf-8").rstrip("\n")
         parts.append(text)
     out = "\n\n".join(p for p in parts if p) + "\n"
-    (SRC / "api.rst").write_text(out, encoding="utf-8")
-    return f"joined {len(files)} chunks -> source/api.rst ({len(out.splitlines())} lines)"
+    (SRC / "kvm" / "api.rst").write_text(out, encoding="utf-8")
+    return f"joined {len(files)} chunks -> source/kvm/api.rst ({len(out.splitlines())} lines)"
 
 
 def strip_fences(path: Path) -> bool:
