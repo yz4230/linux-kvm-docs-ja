@@ -1,0 +1,7 @@
+build/
+.venv/
+chunks/
+.wrangler/
+shot-*.png
+*.log
+__pycache__/
